@@ -37,6 +37,27 @@ permit_info.loc[permit_info['Permit Type'].str.contains('Land Disturbance'), "us
 
 permit_info.loc[permit_info['Permit Type'] == 'Building Permit', "useful_type"] = permit_info['Permit Type'] + " - " + permit_info['Subtype']
 
+#these are wrong
+# Zoning - Site Plan Approval (Land Use Certificate),Zoning - Site Plan Approval( Land Use Certificate),Zoning - Verification Request,Zoning Verification Request Other - ARB Certificate of Appropriateness,Other - Certificate of Appropriateness,Other - Mortgage Acceptance Letter,Other- ARB Certificate of Appropriateness, ARB Certificate of Appropriateness, Certificate of Appropriateness
+
+#condensing all "certificate of appropriatness"
+permit_info.loc[permit_info['Permit Type'] == 'Other- ARB Certificate of Appropriateness','Permit Type'] = 'Certificate of Appropriateness'
+
+permit_info.loc[permit_info['Permit Type'] == 'Other - ARB Certificate of Appropriateness','Permit Type'] = 'Certificate of Appropriateness'
+
+
+permit_info.loc[permit_info['Permit Type'] == 'Other - Certificate of Appropriateness','Permit Type'] = 'Certificate of Appropriateness'
+
+
+permit_info.loc[permit_info['Permit Type'] == 'ARB Certificate of Appropriateness','Permit Type'] = 'Certificate of Appropriateness'
+
+#zoning clean up
+
+permit_info.loc[permit_info['Permit Type'] == 'Zoning Verification Request','Permit Type'] = 'Zoning - Verification Request'
+
+
+permit_info.loc[permit_info['Permit Type'] == 'Zoning - Site Plan Approval( Land Use Certificate)','Permit Type'] = 'Zoning - Site Plan Approval (Land Use Certificate)'
+
 # get a count of null values in useful type column
 count_of_missing_values=permit_info['useful_type'].isna().sum()
 
