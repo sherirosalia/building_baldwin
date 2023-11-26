@@ -35,6 +35,19 @@ permit_info.loc[permit_info['Subtype'] == 'Fire Protection Sprinkler Permit', "u
 
 permit_info.loc[permit_info['Permit Type'].str.contains('Land Disturbance'), "useful_type"] = 'Land Disturbance'
 
+# change Building Permit (Commercial/Multi-Family),Building Permit (Residential)
+
+permit_info.loc[permit_info['Permit Type'] == 'Building Permit (Residential)','Permit Type'] = 'Building Permit'
+
+permit_info.loc[permit_info['Permit Type'] == 'Building Permit (Commercial/Multi-Family)','Permit Type'] = 'Building Permit'
+
+permit_info.loc[(permit_info['Permit Type'] == 'Building Permit') & ( ~permit_info['Subtype'].isin(['Additions','New Construction','Alterations/Repairs']) ) ,'Subtype' ] = 'Other'
+                
+'''Building Permit - Additions,Building Permit - Alterations/Repairs,Building Permit - New Construction'''
+
+
+# permit_info.loc[permit_info['Permit Type'] == 'Building Permit', "useful_type"] = permit_info['Permit Type'] + " - " + permit_info['Subtype']
+
 permit_info.loc[permit_info['Permit Type'] == 'Building Permit', "useful_type"] = permit_info['Permit Type'] + " - " + permit_info['Subtype']
 
 #these are wrong
@@ -50,6 +63,7 @@ permit_info.loc[permit_info['Permit Type'] == 'Other - Certificate of Appropriat
 
 
 permit_info.loc[permit_info['Permit Type'] == 'ARB Certificate of Appropriateness','Permit Type'] = 'Certificate of Appropriateness'
+
 
 #zoning clean up
 
