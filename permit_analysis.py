@@ -1,4 +1,6 @@
 
+'''second script in pipeline and outputs permits_by_address.csv. third script is ml.py'''
+
 import pandas as pd
 import matplotlib.pyplot as plt
 

@@ -1,5 +1,6 @@
 import pandas as pd
-
+''' first cleanup script second in pipeline is permit_analysis.py and this script outputs permits_updated.csv
+'''
 permit_info = pd.read_csv('permits.csv')
 
 # print(permit_info)
