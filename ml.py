@@ -40,7 +40,7 @@ ax = fig.add_subplot(projection='3d')
 '''using accent for cmap below to create distinct colors for qualitative data which in essence is what our clusters are. not used, things like light, medum and dark green might appear in the char which makes it difficult for the viewer to be clear as to whether or not greens  are more relational than lets say for example purple. (not to mention discerning the differnce between greens in this example. )'''
 ax.scatter(x_2d, y_2d, z_2d, c=cluster, marker="o",cmap="Accent")
 
-fig.savefig('3d_cluster.jpg')
+fig.savefig('3d_cluster.png')
 plt.show()
 
 # permit_info.to_csv('ml_column_permits.csv')
